@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Grafana
+spec:
+  destination:
+    namespace: grafana
+    server: https://kubernetes.default.svc
+  source:
+    path: ''
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 9.2.9
+    chart: grafana
+    helm:
+      parameters:
+        - name: ingress.enabled
+          value: 'true'
+        - name: ingress.hosts[0]
+          value: grafana.linasm.click
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
