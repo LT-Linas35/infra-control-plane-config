@@ -1,44 +1,54 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: grafana
-spec:
-  destination:
-    namespace: monitoring
-    server: https://kubernetes.default.svc
-  source:
-    path: ''
-    repoURL: https://grafana.github.io/helm-charts
-    targetRevision: latest
-    chart: grafana
-    helm:
-      parameters:
-        - name: ingress.hosts[0]
-          value: grafana.linasm.click
-      values: |-
-        ingress:
-          enabled: true
-          ingressClassName: alb
-          annotations:
-            alb.ingress.kubernetes.io/scheme: internet-facing
-            alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-            alb.ingress.kubernetes.io/target-type: ip
-            alb.ingress.kubernetes.io/backend-protocol: HTTP
-            alb.ingress.kubernetes.io/ssl-redirect: '443'    
-        datasources:
-          datasources.yaml:
-            apiVersion: 1
-            datasources:
+project: default
+source:
+  repoURL: https://grafana.github.io/helm-charts
+  targetRevision: 9.2.9
+  helm:
+    parameters:
+      - name: ingress.hosts[0]
+        value: grafana.linasm.click
+      - name: autoscaling.enabled
+        value: 'true'
+    values: |-
+      ingress:
+        enabled: true
+        ingressClassName: alb
+        annotations:
+          alb.ingress.kubernetes.io/scheme: internet-facing
+          alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+          alb.ingress.kubernetes.io/target-type: ip
+          alb.ingress.kubernetes.io/backend-protocol: HTTP
+      datasources:
+        datasources.yaml:
+          apiVersion: 1
+          datasources:
             - name: Prometheus
               type: prometheus
               access: proxy
               url: http://prometheus-server.monitoring.svc.cluster.local
               isDefault: true
-  sources: []
-  project: default
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+      envFromSecret: grafana-oauth
+      grafana.ini:
+        log:
+          level: debug
+          filters: login:debug,oauth:debug,accesscontrol:debug
+        server:
+          root_url: https://grafana.linasm.click
+        auth.generic_oauth:
+          enabled: true
+          use_refresh_token: true
+          name: Cognito
+          scopes: openid profile email
+          auth_url: https://supercomputerdomain.auth.us-east-1.amazoncognito.com/oauth2/authorize
+          token_url: https://supercomputerdomain.auth.us-east-1.amazoncognito.com/oauth2/token
+          api_url: https://supercomputerdomain.auth.us-east-1.amazoncognito.com/oauth2/userInfo
+          role_attribute_path: contains($.["cognito:groups"][*], "GrafanaAdmin") && "Admin" || "Viewer"
+          allow_sign_up: true 
+  chart: grafana
+destination:
+  server: https://kubernetes.default.svc
+  namespace: monitoring
+syncPolicy:
+  automated:
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
