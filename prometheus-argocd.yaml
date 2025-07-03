@@ -17,6 +17,11 @@ spec:
           persistentVolume:
             enabled: true
             storageClass: gp2
+        alertmanager:
+          enabled: true
+          persistence:
+            enabled: false
+            storageClass: gp2
   sources: []
   project: default
   syncPolicy:
