@@ -16,7 +16,7 @@ spec:
         server:
           persistentVolume:
             enabled: true
-            storageClassName: gp2
+            storageClass: gp2
   sources: []
   project: default
   syncPolicy:
