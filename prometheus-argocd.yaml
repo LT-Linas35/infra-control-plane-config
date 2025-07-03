@@ -20,7 +20,7 @@ spec:
         alertmanager:
           enabled: true
           persistence:
-            enabled: false
+            enabled: true
             storageClass: gp2
   sources: []
   project: default
