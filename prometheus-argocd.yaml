@@ -1,18 +1,28 @@
-project: default
-source:
-  repoURL: https://prometheus-community.github.io/helm-charts
-  targetRevision: 27.23.0
-  helm:
-    values: |-
-      server:
-        persistentVolume:
-          storageClassName: gp2
-  chart: prometheus
-destination:
-  server: https://kubernetes.default.svc
-  namespace: monitoring
-syncPolicy:
-  automated:
-    selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  source:
+    path: ''
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 27.23.0
+    chart: prometheus
+    helm:
+      values: |-
+        server:
+          persistentVolume:
+            enabled: true
+            storageClassName: gp2
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
