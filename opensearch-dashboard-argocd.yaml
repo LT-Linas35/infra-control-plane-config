@@ -11,6 +11,11 @@ spec:
     repoURL: https://opensearch-project.github.io/helm-charts
     targetRevision: 3.1.0
     chart: opensearch-dashboards
+    helm:
+      values: |-
+        server:
+          name: dashboards
+          host: opensearch-cluster-master
   sources: []
   project: default
   syncPolicy:
