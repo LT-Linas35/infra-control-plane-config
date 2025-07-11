@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-bit
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  source:
+    path: ''
+    repoURL: https://fluent.github.io/helm-charts
+    targetRevision: 0.50.0
+    chart: fluent-bit
+    helm:
+      values: |-
+        config:
+          outpus: |
+            [OUTPUT]
+                Name            opensearch
+                Match           *
+                Host            opensearch-cluster-master
+                Port            9200
+                HTTP_User       admin
+                HTTP_Passwd     Labas123!
+                tls             On
+                tls.verify      Off
+                Index           fluent-bit
+                Suppress_Type_Name On
+                Logstash_Format Off
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
