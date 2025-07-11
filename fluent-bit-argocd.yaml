@@ -14,7 +14,7 @@ spec:
     helm:
       values: |-
         config:
-          outpus: |
+          outputs: |
             [OUTPUT]
                 Name            opensearch
                 Match           *
