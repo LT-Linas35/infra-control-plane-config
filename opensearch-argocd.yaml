@@ -16,6 +16,7 @@ spec:
       values: |-
         config:
           persistence:
+            enabled: true
             storageClass: gp2
         extraEnvs:
           - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
