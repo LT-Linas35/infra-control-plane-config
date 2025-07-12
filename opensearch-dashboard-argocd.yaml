@@ -25,7 +25,7 @@ spec:
             alb.ingress.kubernetes.io/ssl-redirect: "true"
             external-dns.alpha.kubernetes.io/hostname: opensearch.linasm.click
             external-dns.alpha.kubernetes.io/ttl: "5"
-          hosts:
+          host:
             - opensearch.linasm.click
         server:
           name: dashboards
