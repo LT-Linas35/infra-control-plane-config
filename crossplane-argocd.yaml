@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+spec:
+  destination:
+    namespace: control-plane
+    server: https://kubernetes.default.svc
+  source:
+    path: ''
+    repoURL: https://charts.crossplane.io/master/
+    targetRevision: 2.0.0-rc.0.191.g30938ef73
+    chart: crossplane
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
