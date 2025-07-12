@@ -14,10 +14,9 @@ spec:
     chart: opensearch
     helm:
       values: |-
-        config:
-          persistence:
-            enabled: true
-            storageClass: gp2
+        persistence:
+          enabled: true
+          storageClass: gp2
         extraEnvs:
           - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
             value: Labas123!
