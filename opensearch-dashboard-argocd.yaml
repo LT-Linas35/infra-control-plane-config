@@ -15,8 +15,6 @@ spec:
     helm:
       values: |-
         ingress:
-          hosts:
-            - opensearch.linasm.click
           enabled: true
           controller: aws
           ingressClassName: alb
@@ -28,6 +26,8 @@ spec:
             alb.ingress.kubernetes.io/ssl-redirect: '443'
             external-dns.alpha.kubernetes.io/hostname: opensearch.linasm.click
             external-dns.alpha.kubernetes.io/ttl: "5"
+          hosts:
+            - opensearch.linasm.click
         server:
           name: dashboards
           host: opensearch-cluster-master
