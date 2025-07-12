@@ -12,6 +12,13 @@ spec:
     repoURL: https://aquasecurity.github.io/helm-charts/
     targetRevision: v2.14.0
     chart: postee
+    helm:
+      parameters:
+        - name: persistentVolume.enabled
+          value: 'true'
+      values: |-
+        persistentVolume:
+          storageClass: gp2
   sources: []
   project: default
   syncPolicy:
