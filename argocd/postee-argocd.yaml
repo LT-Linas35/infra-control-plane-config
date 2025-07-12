@@ -17,8 +17,9 @@ spec:
         - name: persistentVolume.enabled
           value: 'true'
       values: |-
-        persistentVolume:
-          storageClass: gp2
+        posteeConfig:
+          persistentVolume:
+            storageClass: gp2
   sources: []
   project: default
   syncPolicy:
