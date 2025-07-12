@@ -2,9 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: crossplane
+  namespace: argo-cd
 spec:
   destination:
-    namespace: control-plane
+    namespace: crossplane-system
     server: https://kubernetes.default.svc
   source:
     path: ''
