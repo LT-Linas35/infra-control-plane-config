@@ -14,6 +14,9 @@ spec:
     chart: opensearch-dashboards
     helm:
       values: |-
+        ingress:
+          enabled: false
+          ingressClassName: alb
         server:
           name: dashboards
           host: opensearch-cluster-master
