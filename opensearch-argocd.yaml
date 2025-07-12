@@ -14,9 +14,6 @@ spec:
     chart: opensearch
     helm:
       values: |-
-        ingress:
-          enabled: false
-          ingressClassName: alb
         persistence:
           enabled: true
           storageClass: gp2
