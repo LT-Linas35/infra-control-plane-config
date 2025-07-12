@@ -15,7 +15,7 @@ spec:
     helm:
       values: |-
         ingress:
-          enabled: false
+          enabled: true
           ingressClassName: alb
         server:
           name: dashboards
