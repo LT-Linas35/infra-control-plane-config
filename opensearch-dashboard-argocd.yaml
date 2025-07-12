@@ -16,7 +16,7 @@ spec:
       values: |-
         ingress:
           hosts:
-          - opensearch.linasm.click
+            - opensearch.linasm.click
           enabled: true
           controller: aws
           ingressClassName: alb
