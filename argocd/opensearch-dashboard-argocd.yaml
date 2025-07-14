@@ -18,7 +18,7 @@ spec:
           enabled: true
           config:
             provider: "oidc"
-            oidcIssuerURL: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_QxfqwiYma"
+            oidcIssuerURL: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_QxfqwiYma/.well-known/openid-configuration"
             clientID: "1gbkq4kc9584tdsg5ase0lbpq5"
             clientSecret: "1v1okd4qqigtr1kfp0bfcomqar3qv9v1bp98fhdeh3gaoqpu6t7n"
             cookieSecret: "asdasdadafaefewf"
