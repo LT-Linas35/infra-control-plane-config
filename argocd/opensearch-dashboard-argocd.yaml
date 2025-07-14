@@ -23,6 +23,8 @@ spec:
             opensearch_security.openid.scope: "openid profile email"
             opensearch.hosts: ["https://opensearch.linasm.click"]
             opensearch.ssl.verificationMode: none
+            opensearch.username: "admin"
+            opensearch.password: "admin"
         ingress:
           enabled: true
           ingressClassName: alb
