@@ -22,6 +22,7 @@ spec:
             opensearch_security.openid.client_secret: "1v1okd4qqigtr1kfp0bfcomqar3qv9v1bp98fhdeh3gaoqpu6t7n"
             opensearch_security.openid.scope: "openid profile email"
             opensearch.hosts: ["https://opensearch.linasm.click"]
+            opensearch.ssl.verificationMode: none
         ingress:
           enabled: true
           ingressClassName: alb
