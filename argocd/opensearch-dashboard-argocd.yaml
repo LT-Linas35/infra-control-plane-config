@@ -26,7 +26,6 @@ spec:
             opensearch_security.multitenancy.enabled: true
             opensearch_security.multitenancy.tenants.preferred: ["Private", "Global"]
             #opensearch_security.readonly_mode.roles: ["<role_for_read_only>"]
-            
             # Settings that enable multiple option authentication in the sign-in window #
             opensearch_security.auth.multiple_auth_enabled: true
             opensearch_security.auth.type: ["openid"]
