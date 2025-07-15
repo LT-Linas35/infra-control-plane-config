@@ -13,11 +13,50 @@ spec:
     chart: opensearch
     helm:
       values: |-
+        secretMounts:
+          - name: opensearch-tls
+            secretName: opensearch-tls
+            path: /usr/share/opensearch/config/certs      
         config:
           opensearch.yml: |
-            plugins:
-              security:
-                allow_default_init_securityindex: true       
+            cluster.name: "opensearch-cluster"
+            node.name: "opensearch-node-0"
+            network.host: 0.0.0.0
+            discovery.seed_hosts: ["opensearch-node-0", "opensearch-node-1"]
+            cluster.initial_master_nodes: ["opensearch-node-0", "opensearch-node-1", "opensearch-node-2"]
+            
+            bootstrap.memory_lock: true
+            plugins.security.ssl.transport.enabled: true
+            plugins.security.ssl.transport.pemcert_filepath: certs/tls.crt
+            plugins.security.ssl.transport.pemkey_filepath: certs/tls.key
+            plugins.security.ssl.transport.pemtrustedcas_filepath: certs/ca.crt
+            plugins.security.ssl.transport.enforce_hostname_verification: false
+            
+            plugins.security.ssl.http.enabled: true
+            plugins.security.ssl.http.pemcert_filepath: certs/tls.crt
+            plugins.security.ssl.http.pemkey_filepath: certs/tls.key
+            plugins.security.ssl.http.pemtrustedcas_filepath: certs/ca.crt
+            
+            plugins.security.allow_unsafe_democertificates: false
+            plugins.security.allow_default_init_securityindex: true
+            plugins.security.authcz.admin_dn:
+              - "CN=opensearch.local, O=LT-Linas"
+            
+            plugins.security.audit.type: internal_opensearch
+            plugins.security.enable_snapshot_restore_privilege: true
+            plugins.security.check_snapshot_restore_write_privileges: true
+            plugins.security.restapi.roles_enabled: ["all_access", "security_rest_api_access"]
+            
+            # OpenID su Cognito
+            plugins.security.auth.type: "openid"
+            plugins.security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration"
+            plugins.security.openid.client_id: "2l1bttv5ju4g2h9t67p4uild6m"
+            plugins.security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
+            plugins.security.openid.scope: "openid profile email"
+            plugins.security.openid.base_redirect_url: "https://opensearch.linasm.click"
+            plugins.security.openid.logout_url: "https://opensearch.linasm.click"
+            plugins.security.openid.verify_hostnames: true
+      
         securityConfig:
           config:
             dynamic:
