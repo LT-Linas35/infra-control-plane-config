@@ -8,7 +8,6 @@ spec:
     namespace: monitoring
     server: https://kubernetes.default.svc
   source:
-    path: ''
     repoURL: https://opensearch-project.github.io/helm-charts/
     targetRevision: 3.1.0
     chart: opensearch
@@ -36,11 +35,16 @@ spec:
                     type: openid
                     challenge: false
                     config:
-                      subject_key: email
-                      roles_key: cognito:groups
+                      subject_key: preferred_username
+                      roles_key: roles
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
                   authentication_backend:
                     type: noop
+            roles_mapping:
+              all_access:
+                reserved: false
+                backend_roles:
+                  - "admins"
         persistence:
           enabled: true
           storageClass: gp2
@@ -55,3 +59,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+
