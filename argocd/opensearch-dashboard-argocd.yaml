@@ -18,8 +18,8 @@ spec:
           opensearch_dashboards.yml: |
             opensearch_security.auth.type: "openid"
             opensearch_security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_QxfqwiYma/.well-known/openid-configuration"
-            opensearch_security.openid.client_id: "1gbkq4kc9584tdsg5ase0lbpq5"
-            opensearch_security.openid.client_secret: "1v1okd4qqigtr1kfp0bfcomqar3qv9v1bp98fhdeh3gaoqpu6t7n"
+            opensearch_security.openid.client_id: "2l1bttv5ju4g2h9t67p4uild6m"
+            opensearch_security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
             opensearch_security.openid.scope: "openid profile email"
             opensearch.hosts: ["https://opensearch.linasm.click"]
             opensearch.ssl.verificationMode: none
