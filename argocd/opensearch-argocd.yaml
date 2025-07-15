@@ -12,49 +12,51 @@ spec:
     repoURL: https://opensearch-project.github.io/helm-charts/
     targetRevision: 3.1.0
     chart: opensearch
-    helm:
-      values: |-
-        secretMounts:
-          - name: opensearch-tls
-            secretName: opensearch-tls
-            path: /usr/share/opensearch/config/certs
+  helm:
+    values: |-
+      secretMounts:
+        - name: opensearch-tls
+          secretName: opensearch-tls
+          path: /usr/share/opensearch/config/certs
+      config:
+        opensearch.yml: |
+          plugins:
+            security:
+              allow_default_init_securityindex: true
+              ssl:
+                transport:
+                  pemcert_filepath: certs/tls.crt
+                  pemkey_filepath: certs/tls.key
+                  pemtrustedcas_filepath: certs/tls.crt
+                  enforce_hostname_verification: false
+                http:
+                  enabled: true
+                  pemcert_filepath: certs/tls.crt
+                  pemkey_filepath: certs/tls.key
+                  pemtrustedcas_filepath: certs/tls.crt
+      securityConfig:
+        enabled: true
         config:
-          opensearch.yml: |
-            plugins:
-              security:
-                allow_default_init_securityindex: true
-                ssl:
-                  transport:
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/tls.crt
-                    enforce_hostname_verification: false
-                  http:
-                    enabled: true
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/tls.crt                
-            dynamic:
-              authc:
-                openid_auth_domain:
-                  http_enabled: true
-                  transport_enabled: true
-                  order: 0
-                  http_authenticator:
-                    type: openid
-                    challenge: false
-                    config:
-                      subject_key: preferred_username
-                      roles_key: cognito:groups
-                      openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
-                  authentication_backend:
-                    type: noop    
-        persistence:
-          enabled: true
-          storageClass: gp2
-        extraEnvs:
-          - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
-            value: Labas123!
+          dynamic:
+            authc:
+              openid_auth_domain:
+                http_enabled: true
+                order: 0
+                http_authenticator:
+                  type: openid
+                  challenge: false
+                  config:
+                    subject_key: preferred_username
+                    roles_key: cognito:groups
+                    openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
+                authentication_backend:
+                  type: noop
+      persistence:
+        enabled: true
+        storageClass: gp2
+      extraEnvs:
+        - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
+          value: Labas123!
   sources: []
   project: default
   syncPolicy:
