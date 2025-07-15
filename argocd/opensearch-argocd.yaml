@@ -19,8 +19,6 @@ spec:
             path: /usr/share/opensearch/config/certs      
         config:
           opensearch.yml: |
-            cluster.name: "opensearch-cluster"
-            node.name: "opensearch-node-0"
             network.host: 0.0.0.0
             
             bootstrap.memory_lock: true
