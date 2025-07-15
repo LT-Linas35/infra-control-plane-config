@@ -14,11 +14,11 @@ spec:
     chart: opensearch
     helm:
       values: |-
-        plugins:
-          security:
-            allow_default_init_securityindex: true
         config:
           opensearch.yml: |
+            plugins:
+              security:
+                allow_default_init_securityindex: true    
             dynamic:
               authc:
                 openid_auth_domain:
