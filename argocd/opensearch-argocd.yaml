@@ -17,7 +17,6 @@ spec:
           enabled: true
           path: "/usr/share/opensearch/config/opensearch-security"
           rolesMappingSecret: opensearch-security-config
-          configSecret: opensearch-security-config2
         persistence:
           enabled: true
           storageClass: gp2
