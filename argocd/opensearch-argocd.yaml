@@ -16,13 +16,6 @@ spec:
         securityConfig:
           enabled: true
           config:
-            dataComplete: true
-            data:
-              roles_mapping.yml: |-
-                all_access:
-                  reserved: false
-                  backend_roles:
-                    - "admins"
             dynamic:
               authc:
                 basic_internal_auth_domain:
