@@ -46,6 +46,8 @@ spec:
             alb.ingress.kubernetes.io/backend-protocol: HTTP
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
             alb.ingress.kubernetes.io/ssl-redirect: '443'
+            alb.ingress.kubernetes.io/group.name: opensearch
+            alb.ingress.kubernetes.io/load-balancer-attributes: routing.http.drop_invalid_header_fields.enabled=false
           hosts:
             - host: opensearch.linasm.click
               paths:
