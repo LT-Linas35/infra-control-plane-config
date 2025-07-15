@@ -13,6 +13,11 @@ spec:
     chart: opensearch
     helm:
       values: |-
+        config:
+          opensearch.yml: |
+            plugins:
+              security:
+                allow_default_init_securityindex: true       
         securityConfig:
           config:
             dynamic:
