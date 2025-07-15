@@ -15,21 +15,22 @@ spec:
     helm:
       values: |-
         config:
-          dynamic:
-            authc:
-              openid_auth_domain:
-                http_enabled: true
-                transport_enabled: true
-                order: 0
-                http_authenticator:
-                  type: openid
-                  challenge: false
-                  config:
-                    subject_key: preferred_username
-                    roles_key: cognito:groups
-                    openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
-                authentication_backend:
-                  type: noop    
+          opensearch.yml: |
+            dynamic:
+              authc:
+                openid_auth_domain:
+                  http_enabled: true
+                  transport_enabled: true
+                  order: 0
+                  http_authenticator:
+                    type: openid
+                    challenge: false
+                    config:
+                      subject_key: preferred_username
+                      roles_key: cognito:groups
+                      openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
+                  authentication_backend:
+                    type: noop    
         persistence:
           enabled: true
           storageClass: gp2
