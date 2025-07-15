@@ -22,7 +22,18 @@ spec:
           opensearch.yml: |
             plugins:
               security:
-                allow_default_init_securityindex: true    
+                allow_default_init_securityindex: true
+                ssl:
+                  transport:
+                    pemcert_filepath: certs/tls.crt
+                    pemkey_filepath: certs/tls.key
+                    pemtrustedcas_filepath: certs/tls.crt
+                    enforce_hostname_verification: false
+                  http:
+                    enabled: true
+                    pemcert_filepath: certs/tls.crt
+                    pemkey_filepath: certs/tls.key
+                    pemtrustedcas_filepath: certs/tls.crt                
             dynamic:
               authc:
                 openid_auth_domain:
