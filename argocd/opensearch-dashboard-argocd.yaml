@@ -41,7 +41,7 @@ spec:
             opensearch_security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
 
     
-            opensearch_security.openid.scope: "openid profile email"
+            #opensearch_security.openid.scope: "openid profile email"
             
 
         ingress:
