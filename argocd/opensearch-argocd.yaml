@@ -15,6 +15,7 @@ spec:
       values: |-
         securityConfig:
           enabled: true
+          rolesMappingSecret: opensearch-security-config
           config:
             dynamic:
               authc:
