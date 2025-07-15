@@ -15,7 +15,7 @@ spec:
       values: |-
         securityConfig:
           enabled: true
-          rolesMappingSecret: opensearch-security-config
+          #rolesMappingSecret: opensearch-security-config
           configSecret: opensearch-security-config2
         persistence:
           enabled: true
