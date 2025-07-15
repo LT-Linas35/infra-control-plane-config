@@ -48,6 +48,9 @@ spec:
 
       
         securityConfig:
+          enabled: true        
+          securityadmin:
+            enable: true
           config:
             dynamic:
               nodes_dn:
@@ -66,7 +69,6 @@ spec:
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
                     authentication_backend:
                       type: noop  
-          enabled: true
           path: "/usr/share/opensearch/config/opensearch-security"
           rolesMappingSecret: opensearch-security-config
         persistence:
