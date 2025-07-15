@@ -23,7 +23,7 @@ spec:
             plugins:
               security:
                 nodes_dn:
-                  - "CN=opensearch.local, O=LT-Linas"
+                  - "CN=*, O=LT-Linas"
                 allow_default_init_securityindex: true
                 ssl:
                   transport:
