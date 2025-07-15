@@ -47,15 +47,7 @@ spec:
             plugins.security.check_snapshot_restore_write_privileges: true
             plugins.security.restapi.roles_enabled: ["all_access", "security_rest_api_access"]
             
-            # OpenID su Cognito
-            plugins.security.auth.type: "openid"
-            plugins.security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration"
-            plugins.security.openid.client_id: "2l1bttv5ju4g2h9t67p4uild6m"
-            plugins.security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
-            plugins.security.openid.scope: "openid profile email"
-            plugins.security.openid.base_redirect_url: "https://opensearch.linasm.click"
-            plugins.security.openid.logout_url: "https://opensearch.linasm.click"
-            plugins.security.openid.verify_hostnames: true
+
       
         securityConfig:
           config:
