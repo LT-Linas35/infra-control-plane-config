@@ -16,14 +16,6 @@ spec:
         securityConfig:
           enabled: true
           config:
-            data:
-              roles_mapping.yml: |-
-                all_access:
-                  reserved: false
-                  users:
-                    - "linasm@gmail.com"
-                  backend_roles:
-                    - "admins"
             dynamic:
               authc:
                 openid_auth_domain:
@@ -49,9 +41,6 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
