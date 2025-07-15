@@ -17,6 +17,8 @@ spec:
           enabled: true
           rolesMappingSecret: opensearch-security-config
           config:
+            openid:
+              verify_hostnames: false
             dynamic:
               authc:
                 openid_auth_domain:
