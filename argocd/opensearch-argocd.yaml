@@ -16,13 +16,14 @@ spec:
         securityConfig:
           enabled: true
           config:
-            roles_mapping.yml: |-
-              all_access:
-                reserved: false
-                users:
-                  - "linasm@gmail.com"
-                backend_roles:
-                  - "admins"
+            data:
+              roles_mapping.yml: |-
+                all_access:
+                  reserved: false
+                  users:
+                    - "linasm@gmail.com"
+                  backend_roles:
+                    - "admins"
             dynamic:
               authc:
                 openid_auth_domain:
