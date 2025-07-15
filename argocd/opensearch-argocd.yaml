@@ -15,6 +15,7 @@ spec:
       values: |-
         securityConfig:
           enabled: true
+          path: "/usr/share/opensearch/config/opensearch-security"
           #rolesMappingSecret: opensearch-security-config
           configSecret: opensearch-security-config2
         persistence:
