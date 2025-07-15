@@ -16,7 +16,7 @@ spec:
       values: |-
         config:
           opensearch_dashboards.yml: |
-            opensearch.hosts: ["https://opensearch.linasm.click"]
+            opensearch.hosts: ["https://opensearch-cluster-master:9200"]
             opensearch.ssl.verificationMode: none
             opensearch.username: "admin"
             opensearch.password: "Labas123!"
