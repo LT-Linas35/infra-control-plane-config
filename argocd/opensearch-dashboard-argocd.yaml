@@ -26,7 +26,7 @@ spec:
             #opensearch_security.readonly_mode.roles: ["<role_for_read_only>"]
             # Settings that enable multiple option authentication in the sign-in window #
             opensearch_security.auth.multiple_auth_enabled: true
-            opensearch_security.auth.type: ["openid"]
+            opensearch_security.auth.type: ["basicauth","openid"]
             opensearch_security.openid.base_redirect_url: "https://opensearch.linasm.click"
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
