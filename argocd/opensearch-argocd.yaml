@@ -14,8 +14,9 @@ spec:
     chart: opensearch
     helm:
       values: |-
-        securityConfig:
-          enabled: true
+        plugins:
+          security:
+            allow_default_init_securityindex: true
         config:
           opensearch.yml: |
             dynamic:
