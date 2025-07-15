@@ -56,7 +56,7 @@ spec:
           config:
             dynamic:
               nodes_dn:
-                - "O=LT-Linas, CN=opensearch.local"
+                - "O=LT-Linas, CN=*"
               authc:
                 openid_auth_domain:
                   http_enabled: true
