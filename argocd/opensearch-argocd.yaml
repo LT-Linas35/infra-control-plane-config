@@ -16,6 +16,13 @@ spec:
         securityConfig:
           enabled: true
           config:
+            dataComplete: true
+            data:
+              roles_mapping.yml: |-
+                all_access:
+                  reserved: false
+                  backend_roles:
+                    - "admins"
             dynamic:
               authc:
                 basic_internal_auth_domain:
@@ -40,11 +47,6 @@ spec:
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
                   authentication_backend:
                     type: noop
-            roles_mapping:
-              all_access:
-                reserved: false
-                backend_roles:
-                  - "admins"
         persistence:
           enabled: true
           storageClass: gp2
