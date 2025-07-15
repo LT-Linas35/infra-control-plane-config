@@ -23,7 +23,9 @@ spec:
             plugins:
               security:
                 nodes_dn:
-                  - "CN=*, O=LT-Linas"
+                  - "CN=opensearch-cluster-master-0, O=LT-Linas"
+                  - "CN=opensearch-cluster-master-1, O=LT-Linas"
+                  - "CN=opensearch-cluster-master-2, O=LT-Linas"
                 allow_default_init_securityindex: true
                 ssl:
                   transport:
