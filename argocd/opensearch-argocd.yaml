@@ -14,6 +14,20 @@ spec:
     chart: opensearch
     helm:
       values: |-
+        authc:
+          openid_auth_domain:
+            http_enabled: true
+            transport_enabled: true
+            order: 0
+            http_authenticator:
+              type: openid
+              challenge: true
+              config:
+                subject_key: sub
+                roles_key: cognito:groups   
+                openid_connect_url: https://<tavo-OIDC>/.well-known/openid-configuration
+            authentication_backend:
+              type: noop      
         persistence:
           enabled: true
           storageClass: gp2
