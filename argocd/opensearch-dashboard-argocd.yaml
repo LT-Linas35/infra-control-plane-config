@@ -16,8 +16,6 @@ spec:
       values: |-
         config:
           opensearch_dashboards.yml: |
-            server.host: 0.0.0.0
-            server.port: 5601
             opensearch.hosts: ["https://opensearch.linasm.click"]
             opensearch.ssl.verificationMode: none
             opensearch.username: "admin"
@@ -47,17 +45,13 @@ spec:
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
             alb.ingress.kubernetes.io/ssl-redirect: '443'
             alb.ingress.kubernetes.io/group.name: opensearch
-            alb.ingress.kubernetes.io/load-balancer-attributes: routing.http.drop_invalid_header_fields.enabled=false
           hosts:
             - host: opensearch.linasm.click
               paths:
                 - path: /
-                  backend:
-                    serviceName: ""
-                    servicePort: ""
+                  pathType: Prefix
         server:
-          name: dashboards
-          host: opensearch-cluster-master
+          host: 0.0.0.0
   sources: []
   project: default
   syncPolicy:
