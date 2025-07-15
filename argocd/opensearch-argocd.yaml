@@ -16,6 +16,7 @@ spec:
         securityConfig:
           enabled: true
           rolesMappingSecret: opensearch-security-config
+          configSecret: opensearch-security-config2
         persistence:
           enabled: true
           storageClass: gp2
