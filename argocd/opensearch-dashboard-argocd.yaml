@@ -50,6 +50,9 @@ spec:
               paths:
                 - path: /
                   pathType: Prefix
+                  backend:
+                    serviceName: opensearch-dashboards
+                    servicePort: 5601
         server:
           host: 0.0.0.0
   sources: []
