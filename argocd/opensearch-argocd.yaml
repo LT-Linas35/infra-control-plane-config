@@ -37,6 +37,8 @@ spec:
             
             plugins.security.allow_unsafe_democertificates: false
             plugins.security.allow_default_init_securityindex: true
+            plugins.security.nodes_dn:
+              - "O=LT-Linas, CN=opensearch.local"
             plugins.security.authcz.admin_dn:
               - "O=LT-Linas, CN=opensearch.local"
             
