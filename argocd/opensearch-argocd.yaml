@@ -25,7 +25,7 @@ spec:
                   order: 1
                   http_authenticator:
                     type: openid
-                    challenge: false
+                    challenge: true
                     config:
                       subject_key: email
                       roles_key: cognito:groups
