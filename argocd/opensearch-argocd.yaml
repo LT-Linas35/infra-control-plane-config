@@ -22,8 +22,6 @@ spec:
             cluster.name: "opensearch-cluster"
             node.name: "opensearch-node-0"
             network.host: 0.0.0.0
-            discovery.seed_hosts: ["opensearch-node-0", "opensearch-node-1"]
-            cluster.initial_master_nodes: ["opensearch-node-0", "opensearch-node-1", "opensearch-node-2"]
             
             bootstrap.memory_lock: true
             plugins.security.ssl.transport.enabled: true
