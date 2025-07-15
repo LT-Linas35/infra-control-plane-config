@@ -16,21 +16,57 @@ spec:
         securityConfig:
           enabled: true
           config:
-            dynamic:
-              authc:
-                openid_auth_domain:
-                  http_enabled: true
-                  transport_enabled: true
-                  order: 1
-                  http_authenticator:
-                    type: openid
-                    challenge: false
-                    config:
-                      subject_key: email
-                      roles_key: cognito:groups
-                      openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
-                    authentication_backend:
-                      type: noop
+            dataComplete: true
+            data:
+              config.yml: |-
+                _meta:
+                  type: "config"
+                  config_version: 2
+                dynamic:
+                  authc:
+                    openid_auth_domain:
+                      http_enabled: true
+                      transport_enabled: true
+                      order: 0
+                      http_authenticator:
+                        type: openid
+                        challenge: false
+                        config:
+                          subject_key: email
+                          roles_key: cognito:groups
+                          openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
+                      authentication_backend:
+                        type: noop
+        
+              roles_mapping.yml: |-
+                all_access:
+                  reserved: false
+                  backend_roles:
+                    - "admins"
+                read_only:
+                  reserved: false
+                  backend_roles:
+                    - "readonly"
+        
+              roles.yml: |-
+                all_access:
+                  cluster_permissions:
+                    - 'cluster:*'
+                  index_permissions:
+                    - index_patterns:
+                        - '*'
+                      allowed_actions:
+                        - 'indices:*'
+        
+                read_only:
+                  cluster_permissions:
+                    - 'cluster:monitor/*'
+                  index_permissions:
+                    - index_patterns:
+                        - '*'
+                      allowed_actions:
+                        - 'indices:data/read/*'
+
         persistence:
           enabled: true
           storageClass: gp2
