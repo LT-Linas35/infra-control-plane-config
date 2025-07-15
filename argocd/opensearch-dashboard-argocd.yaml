@@ -29,19 +29,15 @@ spec:
             
             # Settings that enable multiple option authentication in the sign-in window #
             opensearch_security.auth.multiple_auth_enabled: true
-            opensearch_security.auth.type: ["basicauth","openid"]
-            
+            opensearch_security.auth.type: ["openid"]
             opensearch_security.openid.base_redirect_url: "https://opensearch.linasm.click/auth/openid/login"
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
             opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            
             opensearch_security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration"
             opensearch_security.openid.client_id: "2l1bttv5ju4g2h9t67p4uild6m"
             opensearch_security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
             opensearch_security.openid.scope: "openid profile email"
-            
-
         ingress:
           enabled: true
           ingressClassName: alb
