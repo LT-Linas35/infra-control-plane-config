@@ -18,15 +18,6 @@ spec:
           config:
             dynamic:
               authc:
-                basic_internal_auth_domain:
-                  http_enabled: true
-                  transport_enabled: true
-                  order: 0
-                  http_authenticator:
-                    type: basic
-                    challenge: false
-                  authentication_backend:
-                    type: internal
                 openid_auth_domain:
                   http_enabled: true
                   transport_enabled: true
@@ -38,15 +29,14 @@ spec:
                       subject_key: email
                       roles_key: cognito:groups
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
-                  authentication_backend:
-                    type: noop
+                    authentication_backend:
+                      type: noop
         persistence:
           enabled: true
           storageClass: gp2
         extraEnvs:
           - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
             value: Labas123!
-  sources: []
   project: default
   syncPolicy:
     automated:
@@ -54,5 +44,6 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
 
 
