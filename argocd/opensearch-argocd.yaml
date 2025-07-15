@@ -36,8 +36,8 @@ spec:
                     type: openid
                     challenge: false
                     config:
-                      subject_key: preferred_username
-                      roles_key: roles
+                      subject_key: email
+                      roles_key: cognito:groups
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
                   authentication_backend:
                     type: noop
