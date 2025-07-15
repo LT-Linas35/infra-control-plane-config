@@ -14,42 +14,52 @@ spec:
     chart: opensearch
     helm:
       values: |-
-        secretMounts:
-          - name: opensearch-tls
-            secretName: opensearch-tls
-            path: /usr/share/opensearch/config/certs
-        config:
-          opensearch.yml: |
-            plugins:
-              security:
-                nodes_dn:
-                  - "CN=opensearch.local, O=LT-Linas"
-                allow_default_init_securityindex: true
-                ssl:
-                  transport:
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/tls.crt
-                    enforce_hostname_verification: false
-                  http:
-                    enabled: true
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/tls.crt
+#        secretMounts:
+#          - name: opensearch-tls
+#            secretName: opensearch-tls
+#            path: /usr/share/opensearch/config/certs
+#        config:
+#          opensearch.yml: |
+#            plugins:
+#              security:
+#                nodes_dn:
+#                  - "CN=opensearch.local, O=LT-Linas"
+#                allow_default_init_securityindex: true
+#                ssl:
+#                  transport:
+#                    pemcert_filepath: certs/tls.crt
+#                    pemkey_filepath: certs/tls.key
+#                    pemtrustedcas_filepath: certs/tls.crt
+#                    enforce_hostname_verification: false
+#                  http:
+#                    enabled: true
+#                    pemcert_filepath: certs/tls.crt
+#                    pemkey_filepath: certs/tls.key
+#                    pemtrustedcas_filepath: certs/tls.crt
         securityConfig:
           enabled: true
           config:
             dynamic:
               authc:
+                basic_internal_auth_domain:
+                  http_enabled: true
+                  transport_enabled: true
+                  order: 0
+                  http_authenticator:
+                    type: basic
+                    challenge: false
+                  authentication_backend:
+                    type: internal
                 openid_auth_domain:
                   http_enabled: true
-                  order: 0
+                  transport_enabled: true
+                  order: 1
                   http_authenticator:
                     type: openid
                     challenge: false
                     config:
                       subject_key: preferred_username
-                      roles_key: cognito:groups
+                      roles_key: roles
                       openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
                   authentication_backend:
                     type: noop
