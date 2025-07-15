@@ -14,28 +14,6 @@ spec:
     chart: opensearch
     helm:
       values: |-
-#        secretMounts:
-#          - name: opensearch-tls
-#            secretName: opensearch-tls
-#            path: /usr/share/opensearch/config/certs
-#        config:
-#          opensearch.yml: |
-#            plugins:
-#              security:
-#                nodes_dn:
-#                  - "CN=opensearch.local, O=LT-Linas"
-#                allow_default_init_securityindex: true
-#                ssl:
-#                  transport:
-#                    pemcert_filepath: certs/tls.crt
-#                    pemkey_filepath: certs/tls.key
-#                    pemtrustedcas_filepath: certs/tls.crt
-#                    enforce_hostname_verification: false
-#                  http:
-#                    enabled: true
-#                    pemcert_filepath: certs/tls.crt
-#                    pemkey_filepath: certs/tls.key
-#                    pemtrustedcas_filepath: certs/tls.crt
         securityConfig:
           enabled: true
           config:
