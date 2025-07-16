@@ -16,10 +16,10 @@ spec:
         secretMounts:
           - name: opensearch-tls
             secretName: opensearch-node-tls
-            path: /usr/share/opensearch/config/certs
+            path: /usr/share/opensearch/config/node-certs
           - name: opensearch-admin-tls
             secretName: opensearch-admin-tls
-            path: /usr/share/opensearch/config/admin   
+            path: /usr/share/opensearch/config/admin-certs   
         config:
           opensearch.yml: |
             network.host: 0.0.0.0
@@ -31,15 +31,15 @@ spec:
                 ssl:
                   transport:
                     enabled: true
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/ca.crt
+                    pemcert_filepath: node-certs/tls.crt
+                    pemkey_filepath: node-certs/tls.key
+                    pemtrustedcas_filepath: node-certs/ca.crt
                     enforce_hostname_verification: false       
                   http:
-                    enabled: false
-                    pemcert_filepath: certs/tls.crt
-                    pemkey_filepath: certs/tls.key
-                    pemtrustedcas_filepath: certs/ca.crt
+                    enabled: true
+                    pemcert_filepath: node-certs/tls.crt
+                    pemkey_filepath: node-certs/tls.key
+                    pemtrustedcas_filepath: node-certs/ca.crt
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: true
                 nodes_dn:
