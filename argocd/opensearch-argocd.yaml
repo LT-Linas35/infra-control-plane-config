@@ -30,7 +30,7 @@ spec:
               security:
                 ssl:
                   transport:
-                    enabled: false
+                    enabled: true
                     pemcert_filepath: certs/tls.crt
                     pemkey_filepath: certs/tls.key
                     pemtrustedcas_filepath: certs/ca.crt
