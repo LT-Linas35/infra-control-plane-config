@@ -43,9 +43,9 @@ spec:
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: true
                 nodes_dn:
-                  - "CN=opensearch.local,O=LT-Linas"
+                  - "CN=opensearch.local, O=LT-Linas"
                 authcz.admin_dn:
-                  - "CN=admin.linas.local,O=LT-Linas"
+                  - "CN=admin.linas.local, O=LT-Linas"
                 audit:
                   type: internal_opensearch
                 enable_snapshot_restore_privilege: true
