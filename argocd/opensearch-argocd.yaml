@@ -66,7 +66,7 @@ spec:
                     config:
                       subject_key: email
                       roles_key: cognito:groups
-                      openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration
+                      openid_connect_url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_wuTtDOQcv/.well-known/openid-configuration
                     authentication_backend:
                       type: noop  
           path: "/usr/share/opensearch/config/opensearch-security"
