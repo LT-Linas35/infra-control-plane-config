@@ -42,8 +42,8 @@ spec:
                     pemtrustedcas_filepath: certs/ca.crt
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: true
-                #nodes_dn:
-                #  - CN=*,O=LT-Linas
+                nodes_dn:
+                  - CN=*,O=LT-Linas
                 authcz.admin_dn:
                   - CN=admin.linas.local,O=LT-Linas
                 audit:
