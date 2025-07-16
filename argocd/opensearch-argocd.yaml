@@ -37,9 +37,9 @@ spec:
                     enforce_hostname_verification: true       
                   http:
                     enabled: true
-                    pemcert_filepath: node-certs/tls.crt
-                    pemkey_filepath: node-certs/tls.key
-                    pemtrustedcas_filepath: node-certs/ca.crt
+                    pemcert_filepath: node-certs/node1.pem
+                    pemkey_filepath: node-certs/node1-key.pem
+                    pemtrustedcas_filepath: node-certs/root-ca.pem
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: false
                 nodes_dn:
