@@ -15,8 +15,11 @@ spec:
       values: |-
         secretMounts:
           - name: opensearch-tls
-            secretName: opensearch-tls
-            path: /usr/share/opensearch/config/certs      
+            secretName: opensearch-node-tls
+            path: /usr/share/opensearch/config/certs
+          - name: opensearch-admin-tls
+            secretName: opensearch-admin-tls
+            path: /usr/share/opensearch/config/admin   
         config:
           opensearch.yml: |
             network.host: 0.0.0.0
