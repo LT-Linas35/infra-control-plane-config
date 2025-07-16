@@ -31,9 +31,9 @@ spec:
                 ssl:
                   transport:
                     enabled: true
-                    pemcert_filepath: node-certs/tls.crt
-                    pemkey_filepath: node-certs/tls.key
-                    pemtrustedcas_filepath: node-certs/ca.crt
+                    pemcert_filepath: node-certs/node1.pem
+                    pemkey_filepath: node-certs/node1-key.pem
+                    pemtrustedcas_filepath: node-certs/root-ca.pem
                     enforce_hostname_verification: true       
                   http:
                     enabled: true
@@ -43,7 +43,7 @@ spec:
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: false
                 nodes_dn:
-                  - CN=*,O=LT-Linas
+                  - O=Lino,ST=Vilnius,C=LT
                 authcz.admin_dn:
                   - CN=admin.linas.local,O=LT-Linas
                 audit:
