@@ -24,8 +24,10 @@ spec:
           opensearch.yml: |
             network.host: 0.0.0.0
             bootstrap.memory_lock: true
-            discovery.seed_hosts: ["opensearch-cluster-master-0", "opensearch-cluster-master-1", "opensearch-cluster-master-2"]
-            cluster.initial_master_nodes: ["opensearch-cluster-master-0", "opensearch-cluster-master-1", "opensearch-cluster-master-2"]
+            discover:
+              seed_hosts: ["opensearch-cluster-master-0", "opensearch-cluster-master-1", "opensearch-cluster-master-2"]
+            cluster:
+              initial_master_nodes: ["opensearch-cluster-master-0", "opensearch-cluster-master-1", "opensearch-cluster-master-2"]
             plugins:
               security:
                 ssl:
