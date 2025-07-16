@@ -30,13 +30,13 @@ spec:
               security:
                 ssl:
                   transport:
-                    enabled: true
+                    enabled: false
                     pemcert_filepath: certs/tls.crt
                     pemkey_filepath: certs/tls.key
                     pemtrustedcas_filepath: certs/ca.crt
                     enforce_hostname_verification: false       
                   http:
-                    enabled: true
+                    enabled: false
                     pemcert_filepath: certs/tls.crt
                     pemkey_filepath: certs/tls.key
                     pemtrustedcas_filepath: certs/ca.crt
