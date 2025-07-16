@@ -45,7 +45,7 @@ spec:
                 nodes_dn:
                   - CN=*,O=LT-Linas
                 authcz.admin_dn:
-                  - O=LT-Linas, CN=admin.linas.local
+                  - O=LT-Linas,CN=admin.linas.local
                 audit:
                   type: internal_opensearch
                 enable_snapshot_restore_privilege: true
