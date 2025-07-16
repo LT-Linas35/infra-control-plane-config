@@ -41,7 +41,7 @@ spec:
                     pemkey_filepath: node-certs/tls.key
                     pemtrustedcas_filepath: node-certs/ca.crt
                 allow_unsafe_democertificates: false
-                allow_default_init_securityindex: true
+                allow_default_init_securityindex: false
                 nodes_dn:
                   - CN=*,O=LT-Linas
                 authcz.admin_dn:
