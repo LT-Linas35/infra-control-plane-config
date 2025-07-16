@@ -27,9 +27,9 @@ spec:
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
             opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_XcL5BjfTU/.well-known/openid-configuration"
-            opensearch_security.openid.client_id: "2l1bttv5ju4g2h9t67p4uild6m"
-            opensearch_security.openid.client_secret: "1n6jr9u78b18t4gu3nlk16qrucpb2fd60rkuif1ese5oj32o3uti"
+            opensearch_security.openid.connect_url: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_wuTtDOQcv/.well-known/openid-configuration"
+            opensearch_security.openid.client_id: "7fs06094c4qopapbjc7cj0enc5"
+            opensearch_security.openid.client_secret: "1mksgsqfs8kghc13pepisd2r4t7ahaavg4pdsrg66i2lkbcq6uat"
             opensearch_security.openid.scope: "openid profile email"
         ingress:
           enabled: true
