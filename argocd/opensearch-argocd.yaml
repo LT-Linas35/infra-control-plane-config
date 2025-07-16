@@ -34,7 +34,7 @@ spec:
                     pemcert_filepath: node-certs/node1.pem
                     pemkey_filepath: node-certs/node1-key.pem
                     pemtrustedcas_filepath: node-certs/root-ca.pem
-                    enforce_hostname_verification: true       
+                    enforce_hostname_verification: false       
                   http:
                     enabled: true
                     pemcert_filepath: node-certs/node1.pem
