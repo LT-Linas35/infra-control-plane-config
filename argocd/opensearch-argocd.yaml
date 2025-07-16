@@ -15,7 +15,7 @@ spec:
       values: |-
         secretMounts:
           - name: opensearch-tls
-            secretName: opensearch-tls
+            secretName: opensearch-node-tls
             path: /usr/share/opensearch/config/node-certs
             readOnly: true
           #- name: opensearch-admin-tls
