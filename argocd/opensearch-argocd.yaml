@@ -18,10 +18,10 @@ spec:
             secretName: opensearch-node-tls
             path: /usr/share/opensearch/config/node-certs
             readOnly: true
-          #- name: opensearch-admin-tls
-          #  secretName: opensearch-admin-cert-wm7qk
-          #  path: /usr/share/opensearch/config/admin-certs
-          #  defaultMode: 0600
+          - name: opensearch-admin-tls
+            secretName: opensearch-admin
+            path: /usr/share/opensearch/config/admin-certs
+            defaultMode: 0600
         config:
           opensearch.yml: |
             network.host: 0.0.0.0
@@ -45,7 +45,7 @@ spec:
                 nodes_dn:
                   - O=Lino,ST=Vilnius,C=LT
                 authcz.admin_dn:
-                  - CN=admin.linas.local,O=LT-Linas
+                  - O=Lino,ST=Vilnius,C=LT
                 audit:
                   type: internal_opensearch
                 enable_snapshot_restore_privilege: true
