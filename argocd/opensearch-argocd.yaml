@@ -31,21 +31,21 @@ spec:
                 ssl:
                   transport:
                     enabled: true
-                    pemcert_filepath: node-certs/node1.pem
-                    pemkey_filepath: node-certs/node1-key.pem
-                    pemtrustedcas_filepath: node-certs/root-ca.pem
+                    pemcert_filepath: node-certs/tls.crt
+                    pemkey_filepath: node-certs/tls.key
+                    pemtrustedcas_filepath: node-certs/ca.crt
                     enforce_hostname_verification: false       
                   http:
                     enabled: true
-                    pemcert_filepath: node-certs/node1.pem
-                    pemkey_filepath: node-certs/node1-key.pem
-                    pemtrustedcas_filepath: node-certs/root-ca.pem
+                    pemcert_filepath: node-certs/tls.crt
+                    pemkey_filepath: node-certs/tls.key
+                    pemtrustedcas_filepath: node-certs/ca.crt
                 allow_unsafe_democertificates: false
                 allow_default_init_securityindex: true
                 nodes_dn:
-                  - O=Lino,ST=Vilnius,C=LT
+                  - CN=opensearch-tls,OU=OpsTeam,O=DevOpsLT,L=Vilnius,C=LT
                 authcz.admin_dn:
-                  - O=Lino,ST=Vilnius,C=LT
+                  - CN=opensearch-admin-tls,OU=OpsTeam,O=DevOpsLT,L=Vilnius,C=LT
                 audit:
                   type: internal_opensearch
                 enable_snapshot_restore_privilege: true
