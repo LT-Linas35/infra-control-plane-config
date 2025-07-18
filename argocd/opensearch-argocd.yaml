@@ -26,6 +26,8 @@ spec:
           opensearch.yml: |
             network.host: 0.0.0.0
             bootstrap.memory_lock: true
+            ml_commons_dashboards:
+              enabled: true
             plugins:
               security:
                 ssl:
