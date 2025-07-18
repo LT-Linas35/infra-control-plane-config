@@ -26,9 +26,9 @@ spec:
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
             opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.connect_url: {{ .Values.existingSecret.client_connect_url }}
-            opensearch_security.openid.client_id: {{ .Values.existingSecret.client_id }}
-            opensearch_security.openid.client_secret: {{ .Values.existingSecret.client_secret }}
+            opensearch_security.openid.connect_url: 
+            opensearch_security.openid.client_id: 
+            opensearch_security.openid.client_secret: 
             opensearch_security.openid.scope: "openid profile email"
         ingress:
           enabled: true
@@ -58,11 +58,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  existingSecret:
-    client_secret: {{ .Values.secretRefs.oidc_client_secret }}
-    client_id: {{ .Values.secretRefs.oidc_client_id }}
-    client_connect_url: {{ .Values.secretRefs.oidc_client_connect_url }}
-  secretRefs:
-    oidc_client_secret: {{ .ValuesFrom.kubernetesSecret.opensearch_dashboard_secrets.client_secret }}
-    oidc_client_id: {{ .ValuesFrom.kubernetesSecret.opensearch_dashboard_secrets.client_id }}
-    oidc_client_connect_url: {{ .ValuesFrom.kubernetesSecret.opensearch_dashboard_secrets.connect_url }}
