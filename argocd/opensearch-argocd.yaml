@@ -31,16 +31,12 @@ spec:
                 ssl:
                   transport:
                     enabled: true
-                    reload:
-                      enabled: true
                     pemcert_filepath: node-certs/tls.crt
                     pemkey_filepath: node-certs/tls.key
                     pemtrustedcas_filepath: node-certs/ca.crt
                     enforce_hostname_verification: false       
                   http:
                     enabled: true
-                    reload:
-                      enabled: true
                     pemcert_filepath: node-certs/tls.crt
                     pemkey_filepath: node-certs/tls.key
                     pemtrustedcas_filepath: node-certs/ca.crt
