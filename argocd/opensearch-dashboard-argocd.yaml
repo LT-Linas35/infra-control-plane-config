@@ -37,8 +37,8 @@ spec:
         config:
           opensearch_dashboards.yml: |
             opensearch.hosts: ["https://opensearch-cluster-master"]
-            ml_commons_dashboards:
-              enabled: true
+            ml_commons_dashboards.enabled: true
+            logging.verbose: true
             server.ssl.enabled: true
             opensearch.ssl.verificationMode: full
             server.ssl.certificate: /usr/share/opensearch-dashboards/certs/tls.crt
