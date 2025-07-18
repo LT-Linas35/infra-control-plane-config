@@ -93,7 +93,9 @@ spec:
   secretName: opensearch-dashboards
   commonName: opensearch-dashboards
   dnsNames:
-    - opensearch-dashboards
+    - opensearch-cluster-master-0
+    - opensearch-cluster-master-1
+    - opensearch-cluster-master-2
   subject:
     organizations:
       - DevOpsLT
