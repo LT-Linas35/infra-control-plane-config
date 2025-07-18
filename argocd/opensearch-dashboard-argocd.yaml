@@ -41,9 +41,9 @@ spec:
               enabled: true
             server.ssl.enabled: true
             opensearch.ssl.verificationMode: full
-            server.ssl.certificate: certs/tls.crt
-            server.ssl.key: certs/tls.key
-            opensearch.ssl.certificateAuthorities: [ "certs/ca.crt" ]
+            server.ssl.certificate: /usr/share/opensearch-dashboards/certs/tls.crt
+            server.ssl.key: /usr/share/opensearch-dashboards/certs/tls.key
+            opensearch.ssl.certificateAuthorities: [ "/usr/share/opensearch-dashboards/certs/ca.crt" ]
             opensearch.requestHeadersAllowlist: ["securitytenant","Authorization"]
             opensearch_security.auth.type: ["openid"]
             opensearch_security.openid.base_redirect_url: "https://opensearch.linasm.click"
