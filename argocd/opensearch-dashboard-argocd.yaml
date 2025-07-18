@@ -8,12 +8,27 @@ spec:
     namespace: monitoring
     server: https://kubernetes.default.svc
   source:
-    path: ''
     repoURL: https://opensearch-project.github.io/helm-charts
     targetRevision: 3.1.0
     chart: opensearch-dashboards
     helm:
       values: |-
+        extraEnvs:
+          - name: OIDC_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboards-secrets
+                key: OIDC_CLIENT_ID
+          - name: OIDC_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboards-secrets
+                key: OIDC_CLIENT_SECRET
+          - name: OIDC_CLIENT_URL
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboards-secrets
+                key: OIDC_CLIENT_URL      
         config:
           opensearch_dashboards.yml: |
             opensearch.hosts: ["https://opensearch-cluster-master"]
@@ -26,9 +41,9 @@ spec:
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
             opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.connect_url: 
-            opensearch_security.openid.client_id: 
-            opensearch_security.openid.client_secret: 
+            opensearch_security.openid.connect_url: "${OIDC_CLIENT_URL}"
+            opensearch_security.openid.client_id: "${OIDC_CLIENT_ID}"
+            opensearch_security.openid.client_secret: "${OIDC_CLIENT_SECRET}"
             opensearch_security.openid.scope: "openid profile email"
         ingress:
           enabled: true
@@ -50,7 +65,6 @@ spec:
                     servicePort: 5601
         server:
           host: 0.0.0.0
-  sources: []
   project: default
   syncPolicy:
     automated:
