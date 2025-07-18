@@ -17,43 +17,12 @@ spec:
           - name: opensearch-dashboards
             secretName: opensearch-dashboards
             path: /usr/share/opensearch-dashboards/certs
-            readOnly: true  
-        extraEnvs:
-        - name: OIDC_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: opensearch-dashboard-secrets
-              key: OIDC_CLIENT_ID
-        - name: OIDC_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: opensearch-dashboard-secrets
-              key: OIDC_CLIENT_SECRET
-        - name: OIDC_CLIENT_URL
-          valueFrom:
-            secretKeyRef:
-              name: opensearch-dashboard-secrets
-              key: OIDC_CLIENT_URL               
+            readOnly: true             
         config:
-          opensearch_dashboards.yml: |
-            opensearch.hosts: ["https://opensearch-cluster-master"]
-            ml_commons_dashboards.enabled: true
-            logging.verbose: true
-            server.ssl.enabled: true
-            opensearch.ssl.verificationMode: full
-            server.ssl.certificate: /usr/share/opensearch-dashboards/certs/tls.crt
-            server.ssl.key: /usr/share/opensearch-dashboards/certs/tls.key
-            opensearch.ssl.certificateAuthorities: [ "/usr/share/opensearch-dashboards/certs/ca.crt" ]
-            opensearch.requestHeadersAllowlist: ["securitytenant","Authorization"]
-            opensearch_security.auth.type: ["openid"]
-            opensearch_security.openid.base_redirect_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.verify_hostnames: false
-            opensearch_security.openid.refresh_tokens: false
-            opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.connect_url: ${OIDC_CLIENT_URL}
-            opensearch_security.openid.client_id: ${OIDC_CLIENT_ID}
-            opensearch_security.openid.client_secret: ${OIDC_CLIENT_SECRET}
-            opensearch_security.openid.scope: "openid profile email"
+          secretMounts: 
+            - name: opensearch_dashboards.yml
+              secretName: opensearch-dashboard
+              path: /usr/share/dashboards/config
         ingress:
           enabled: true
           ingressClassName: alb
