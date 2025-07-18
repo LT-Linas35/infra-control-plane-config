@@ -67,7 +67,7 @@ spec:
           - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: opensearch-dashboards-secrets
+                name: opensearch-dashboard-secrets
                 key: OPENSEARCH_PASSWORD
   project: default
   syncPolicy:
