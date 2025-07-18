@@ -50,9 +50,9 @@ spec:
             opensearch_security.openid.verify_hostnames: false
             opensearch_security.openid.refresh_tokens: false
             opensearch_security.openid.logout_url: "https://opensearch.linasm.click"
-            opensearch_security.openid.connect_url: "${OIDC_CLIENT_URL}"
-            opensearch_security.openid.client_id: "${OIDC_CLIENT_ID}"
-            opensearch_security.openid.client_secret: "${OIDC_CLIENT_SECRET}"
+            opensearch_security.openid.connect_url: ${OIDC_CLIENT_URL}
+            opensearch_security.openid.client_id: ${OIDC_CLIENT_ID}
+            opensearch_security.openid.client_secret: ${OIDC_CLIENT_SECRET}
             opensearch_security.openid.scope: "openid profile email"
         ingress:
           enabled: true
