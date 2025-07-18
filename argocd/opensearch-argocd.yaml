@@ -61,7 +61,10 @@ spec:
           storageClass: gp2
         extraEnvs:
           - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
-            value: Labas123!
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboards-secret
+                key: OPENSEARCH_PASSWORD
   project: default
   syncPolicy:
     automated:
