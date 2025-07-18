@@ -83,3 +83,30 @@ spec:
       - LT
     localities:
       - Vilnius    
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: opensearch-dashboards
+  namespace: monitoring
+spec:
+  secretName: opensearch-dashboards
+  commonName: opensearch-dashboards
+  dnsNames:
+    - opensearch-dashboards
+  subject:
+    organizations:
+      - DevOpsLT
+    organizationalUnits:
+      - OpsTeam
+    countries:
+      - LT
+    localities:
+      - Vilnius    
+  issuerRef:
+    name: root-ca-issuer
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: ECDSA
+    size: 521
+    encoding: PKCS8
