@@ -39,7 +39,11 @@ spec:
             opensearch.hosts: ["https://opensearch-cluster-master"]
             ml_commons_dashboards:
               enabled: true
+            server.ssl.enabled: true
             opensearch.ssl.verificationMode: full
+            server.ssl.certificate: certs/tls.crt
+            server.ssl.key: certs/tls.key
+            opensearch.ssl.certificateAuthorities: [ "certs/ca.crt"
             opensearch.requestHeadersAllowlist: ["securitytenant","Authorization"]
             opensearch_security.auth.type: ["openid"]
             opensearch_security.openid.base_redirect_url: "https://opensearch.linasm.click"
