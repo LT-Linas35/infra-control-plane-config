@@ -14,6 +14,17 @@ spec:
     chart: fluent-bit
     helm:
       values: |-
+        envFrom: 
+          - name: HTTP_USER
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboard-secrets
+                key: FLUENTBIT_USER
+          - name: HTTP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: opensearch-dashboard-secrets
+                key: FLUENTBIT_PASSWORD                
         config:
           outputs: |
             [OUTPUT]
@@ -21,8 +32,8 @@ spec:
                 Match           *
                 Host            opensearch-cluster-master
                 Port            9200
-                HTTP_User       admin
-                HTTP_Passwd     Labas123!
+                HTTP_User       ${HTTP_USER}
+                HTTP_Passwd     ${HTTP_PASSWORD}
                 tls             On
                 tls.verify      Off
                 Index           fluent-bit
