@@ -39,6 +39,7 @@ spec:
   secretName: opensearch-tls
   commonName: opensearch-tls
   dnsNames:
+    - opensearch-cluster-master
     - opensearch-cluster-master-0
     - opensearch-cluster-master-1
     - opensearch-cluster-master-2
