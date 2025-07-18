@@ -17,23 +17,7 @@ spec:
           - name: opensearch-dashboards
             secretName: opensearch-dashboards
             path: /usr/share/opensearch-dashboards/certs
-            readOnly: true      
-        extraEnvs:
-          - name: OIDC_CLIENT_ID
-            valueFrom:
-              secretKeyRef:
-                name: opensearch-dashboard-secrets
-                key: OIDC_CLIENT_ID
-          - name: OIDC_CLIENT_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: opensearch-dashboard-secrets
-                key: OIDC_CLIENT_SECRET
-          - name: OIDC_CLIENT_URL
-            valueFrom:
-              secretKeyRef:
-                name: opensearch-dashboard-secrets
-                key: OIDC_CLIENT_URL      
+            readOnly: true         
         config:
           opensearch_dashboards.yml: |
             opensearch.hosts: ["https://opensearch-cluster-master"]
@@ -81,3 +65,19 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  extraEnvs:
+    - name: OIDC_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: opensearch-dashboard-secrets
+          key: OIDC_CLIENT_ID
+    - name: OIDC_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: opensearch-dashboard-secrets
+          key: OIDC_CLIENT_SECRET
+    - name: OIDC_CLIENT_URL
+      valueFrom:
+        secretKeyRef:
+          name: opensearch-dashboard-secrets
+          key: OIDC_CLIENT_URL   
