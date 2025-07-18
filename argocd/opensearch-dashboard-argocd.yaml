@@ -17,12 +17,10 @@ spec:
           - name: opensearch-dashboards
             secretName: opensearch-dashboards
             path: /usr/share/opensearch-dashboards/certs
-            readOnly: true             
-        config:
-          secretMounts: 
-            - name: opensearch_dashboards.yml
-              secretName: opensearch-dashboard
-              path: /usr/share/dashboards/config
+            readOnly: true 
+          - name: opensearch_dashboards.yml
+            secretName: opensearch-dashboard
+            path: /usr/share/dashboards/config            
         ingress:
           enabled: true
           ingressClassName: alb
